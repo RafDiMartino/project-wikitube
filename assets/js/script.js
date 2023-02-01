@@ -1,9 +1,9 @@
-const API = "AIzaSyBEBV7uxSff-XFwRYo2JGTFcXbAWFNtwX4"
+const youtubeAPI = "AIzaSyBEBV7uxSff-XFwRYo2JGTFcXbAWFNtwX4"
 
 var videoTest = $("#youtube-test")
 var search = "";
 
-
+// Event listener to get the search value
 $("#search-button").click(function(e) {
     e.preventDefault()
     search = $("#search-input").val();
@@ -12,9 +12,9 @@ $("#search-button").click(function(e) {
     videoTest.empty()
 });
 
-// Function to get the current city weather
+// Function to get Youtube videos
 function getYoutubeVideo(){
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ API +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube"
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
     $.ajax({
         url: queryURL,
         method: "GET",
