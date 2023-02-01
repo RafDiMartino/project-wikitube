@@ -1,7 +1,16 @@
 const API = "AIzaSyBEBV7uxSff-XFwRYo2JGTFcXbAWFNtwX4"
 
 var videoTest = $("#youtube-test")
+var search = "";
 
+
+$("#search-button").click(function(e) {
+    e.preventDefault()
+    search = $("#search-input").val();
+    console.log(search)
+    getYoutubeVideo()
+    videoTest.empty()
+});
 
 // Function to get the current city weather
 function getYoutubeVideo(){
@@ -27,5 +36,3 @@ function getYoutubeVideo(){
     });
     
 }
-
-getYoutubeVideo()
