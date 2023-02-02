@@ -4,13 +4,33 @@ var videoTest = $("#youtube-test")
 var wikipediaTest = $("#wikipedia-test")
 var search = "";
 
+//Modal
+$('#exampleModal').modal('show');
+
+
 // Event listener to get the search value
-$("#search-button").click(function(e) {
+$(".search-button-class").click(function(e) {
+    
     e.preventDefault()
     search = $("#search-input").val();
+    // $('#container').toggleClass("hide");
+    // console.log(search)
+    getWikiArticles()
+    wikipediaTest.empty()
+    
+    // getYoutubeVideo()
+    // videoTest.empty()
+});
+
+$(".search-button-modal").click(function(e) {
+    
+    e.preventDefault()
+    search = $("#search-input-modal").val();
+    // $('#container').toggleClass("hide");
     console.log(search)
     getWikiArticles()
     wikipediaTest.empty()
+    
     // getYoutubeVideo()
     // videoTest.empty()
 });
