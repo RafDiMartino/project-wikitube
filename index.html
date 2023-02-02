@@ -6,9 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WikiTube</title>
     <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
     <h1>WikiTube</h1>
+    <form id="search-form" class="form">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-input weather-search" type="text" id="search-input" placeholder="London"
+              aria-labelledby="form-heading" aria-controls="today" />
+            <div class="input-group-append">
+              <button type="submit" class="btn btn-outline-success" id="search-button" aria-label="submit search">
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    <div id="wikipedia-test"></div>
+    <div id="youtube-test"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
