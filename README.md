@@ -23,6 +23,10 @@ AS A user I should be able to enter a brand new search
 
 _
 
+### Technologies Use
+
+_
+
 ### Deployed Application 
 
 _
