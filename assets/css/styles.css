@@ -5,9 +5,5 @@
 }
 
 .hide {
-    display: block;
-}
-
-.show {
-    display: flex;
+    display: none;
 }
