@@ -4,13 +4,30 @@
     padding: 0;
 }
 
-iframe {
-    margin-top: 20px;
-    padding: 0px;
-    border: none;
+.large-video {
+    float: left;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.video-row {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.video-row-1,
+.video-row-2 {
+    width: 23%;
+    float: left;
+    overflow: hidden;
+    margin-right: 2%;
+    justify-content: space-around;
+}
 
 
-
-    
-
+.video-row-2 {
+    margin-right: 0;
+    clear: right;
 }
