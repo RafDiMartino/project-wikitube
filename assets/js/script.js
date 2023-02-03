@@ -69,10 +69,10 @@ function getYoutubeVideo(){
 }
 
 //Function to get Wikipedia articles
-function getWikiArticles(){
+function getWikiArticles() {
     // var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + search + "&format=json&origin=*"
     //var queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="+ search +"&rvslots=*&rvprop=content&format=json&origin=*"
-    var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch="+ search +"&gsrlimit=1&prop=pageimages|extracts&exintro&exlimit=max&format=json&origin=*&pithumbsize=1000"
+    var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch=" + search + "&gsrlimit=1&prop=pageimages|extracts&exintro&exlimit=max&format=json&origin=*&pithumbsize=1000"
     //var queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="+ search +"&rvslots=*&rvprop=content&format=json&origin=*"
     //var queryURL = "http://en.wikipedia.org/w/api.php?action=parse&format=json&page=Rome&prop=text|extract&format=json&origin=*"
     $.ajax({
@@ -82,10 +82,12 @@ function getWikiArticles(){
             alert("error")
             return
         },
-    }).then(function(wikiData) {
-        // console.log(wikiData);
+    }).then(function (wikiData) {
+        console.log(wikiData);
+        var test = wikiData.query.pages;
+        // var test2 = Object.keys(test).toString()
         var results = wikiData.query.pages
-        Object.keys(results).forEach( key => {
+        Object.keys(results).forEach(key => {
             const id = key
             const title = results[key].title
             const text = results[key].extract
@@ -96,8 +98,8 @@ function getWikiArticles(){
                 <img src="${image}">
                 <p>${text}</p>
             `)
-        }) 
-        // console.log(results)
+        })
+        console.log(results)
     });
 }
 
