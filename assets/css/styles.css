@@ -1,13 +1,47 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
+    box-sizing: 
+    border-box;margin: 0;
     padding: 0;
 }
 
-.hide {
-    display: none;
+/* functionality to hide/display page elements on inital page load */
+.hide {display: none;}
+.close {display: none;}
+
+/* page design */
+.container {font-family: 'Inter';}
+.container h1 {
+    border-bottom: 2px solid #000;
+    font-size: 32px;
+    font-weight:bold;
+    letter-spacing: -1px;
+    margin: 1em 0;
+    padding: 0 0 8px;
+}
+#search-input {
+    width: calc(100% - 88px);
+    padding: 8px 16px;
+    border: 1px solid #000;
+}
+.btn.search-button-class {
+    border-radius: 0;
+    width: 88px;
+    margin: 0;
 }
 
-.close {
-    display: none;
+/* Wikipedia design elements */
+#wikipedia-test {
+    margin: 4em 0;
+}
+#wikipedia-test h2 {
+    font-size: 48px;
+    font-weight: bold;
+    text-align:center;
+}
+#wikipedia-test img {
+    width: 400px;
+    object-fit: cover;
+    height: 400px;
+    border-radius: 400px;
+    float: right;
 }
