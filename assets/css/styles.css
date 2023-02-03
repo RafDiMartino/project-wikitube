@@ -1,5 +1,6 @@
 * {
-    box-sizing: border-box;
+    box-sizing: 
+    border-box;
     margin: 0;
     padding: 0;
 }
@@ -31,3 +32,93 @@
     clear: right;
 }
 
+/* functionality to hide/display page elements on inital page load */
+
+.hide {display: none;}
+.close {display: none;}
+
+/* page design */
+
+.container {font-family: 'Inter';}
+.container h1 {
+    border-bottom: 2px solid #000;
+    font-size: 32px;
+    font-weight:bold;
+    letter-spacing: -1px;
+    margin: 1em 0;
+    padding: 0 0 8px;
+}
+#search-input {
+    width: calc(100% - 88px);
+    padding: 8px 16px;
+    border: 1px solid #000;
+}
+.btn.search-button-class {
+    border-radius: 0;
+    width: 88px;
+    margin: 0;
+}
+.recent-search {
+    font-size: 12px;
+    margin:16px 0;
+}
+.recent-search a {
+    border: 1px solid #28a745;
+    border-radius: 9px;
+    color: #28a745;
+    padding: 4px 12px;
+}
+.recent-search a:focus,
+.recent-search a:hover {
+    background: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-color: transparent;
+}
+
+/* Wikipedia design elements */
+#wikipedia-test {
+    margin: 4em 0;
+}
+#wikipedia-test h2 {
+    font-size: 48px;
+    font-weight: bold;
+    text-align:center;
+    line-height: 1.4;
+}
+#wikipedia-test img {
+    width: 400px;
+    object-fit: cover;
+    height: 400px;
+    border-radius: 400px;
+    float: right;
+    margin: 0 0 12px 12px;
+}
+#wikipedia-test p {
+    color: #121212;
+}
+
+/* breakpoints for mobile */
+@media (max-width: 768px) {
+    #wikipedia-test h2 {
+        font-size: 40px;
+    }
+    #wikipedia-test img {
+        display: block;
+        margin: 0 auto 24px;
+        float: none;
+    }
+    #wikipedia-test p {
+        display: block;
+    }
+}
+@media (max-width: 512px) {
+    #wikipedia-test h2 {
+        font-size: 32px;
+    }
+    #wikipedia-test img {
+        height: 200px;
+        width: 200px;
+        
+    }
+}

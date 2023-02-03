@@ -4,10 +4,26 @@ var videoTest = $("#youtube-test")
 var wikipediaTest = $("#wikipedia-test")
 var search = "";
 
+//Modal
+$('#exampleModal').modal('show');
+
 // Event listener to get the search value
-$("#search-button").click(function (e) {
+$(".search-button-class").click(function(e) {
     e.preventDefault()
     search = $("#search-input").val();
+    // $('#container').toggleClass("hide");
+    // console.log(search)
+    getWikiArticles()
+    wikipediaTest.empty()
+    
+    getYoutubeVideo()
+    videoTest.empty()
+});
+
+$(".search-button-modal").click(function(e) {
+    e.preventDefault()
+    search = $("#search-input-modal").val();
+    $("div#container").toggleClass("hide");
     console.log(search)
     getWikiArticles()
     wikipediaTest.empty()
@@ -15,9 +31,9 @@ $("#search-button").click(function (e) {
     videoTest.empty()
 });
 
-//Function to get Youtube videos
-/*function getYoutubeVideo() {
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?key=" + youtubeAPI + "&q=" + search + "&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
+// Function to get Youtube videos
+function getYoutubeVideo(){
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -25,71 +41,20 @@ $("#search-button").click(function (e) {
             alert("error")
             return
         },
-    }).then(function (youtubeData) {
+    }).then(function(youtubeData) {
         console.log(youtubeData)
         for (let i = 0; i < youtubeData.items.length; i++) {
             var videoId = youtubeData.items[i].id.videoId;
             console.log(videoId)
             videoTest.append(`
-           
-                 <iframe width="420" height="315"
+                <iframe width="420" height="315"
                     src="https://www.youtube.com/embed/${videoId}">
-                                     </iframe>
-                 
-                              `);
+                </iframe>
+            `);
         }
-    });
+    });   
 }
-*/
-// Rewrite function to append video so that instead of five videos the same size, We have 1 large and 4 same size. This would make styling easier
-function getYoutubeVideo() {
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?key=" + youtubeAPI + "&q=" + search + "&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        error: () => {
-            alert("error")
-            return
-        },
-    }).then(function (youtubeData) {
-        console.log(youtubeData)
-        for (let i = 0; i < youtubeData.items.length; i++) {
-            var videoId = youtubeData.items[i].id.videoId;
-            //add video title
-            var videoTitle = youtubeData.items[i].snippet.title;
-            console.log(videoId)
-            if (i === 0) {
-                videoTest.append(`
-                <div class="large-video">
-                    <iframe width="100%" height="400"
-                        src="https://www.youtube.com/embed/${videoId}">
-                    </iframe>
-                    <p>${videoTitle}</p> 
-                </div>
-                `);
-            } else if (i > 0 && i <= 2) {
-                videoTest.append(`
-                <div class="video-row-1">
-                    <iframe class="video-iframe" width="49%" height="200"
-                        src="https://www.youtube.com/embed/${videoId}">
-                    </iframe>
-                    <p>${videoTitle}</p>
-                </div>
-                `);
-            } else if (i > 2 && i <= 4) {
-                videoTest.append(`
-                <div class="video-row-2">
-                    <iframe class="video-iframe" width="49%" height="200"
-                        src="https://www.youtube.com/embed/${videoId}">
-                    </iframe>
-                    <p>${videoTitle}</p>
-                </div>
-                `);
-                
-            }
-        }
-    });
-}
+
 //Function to get Wikipedia articles
 function getWikiArticles() {
     // var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + search + "&format=json&origin=*"
