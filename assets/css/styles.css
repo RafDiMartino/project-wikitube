@@ -1,14 +1,17 @@
 * {
     box-sizing: 
-    border-box;margin: 0;
+    border-box;
+    margin: 0;
     padding: 0;
 }
 
 /* functionality to hide/display page elements on inital page load */
+
 .hide {display: none;}
 .close {display: none;}
 
 /* page design */
+
 .container {font-family: 'Inter';}
 .container h1 {
     border-bottom: 2px solid #000;
@@ -27,6 +30,23 @@
     border-radius: 0;
     width: 88px;
     margin: 0;
+}
+.recent-search {
+    font-size: 12px;
+    margin:16px 0;
+}
+.recent-search a {
+    border: 1px solid #28a745;
+    border-radius: 9px;
+    color: #28a745;
+    padding: 4px 12px;
+}
+.recent-search a:focus,
+.recent-search a:hover {
+    background: #28a745;
+    color: #fff;
+    text-decoration: none;
+    border-color: transparent;
 }
 
 /* Wikipedia design elements */
