@@ -1,4 +1,4 @@
-const youtubeAPI = "AIzaSyARAdM68mQB0klzmy4LNFuo2e8Z4t4BQu8"
+const youtubeAPI = "AIzaSyDGCWZu84Wo1O7MmVU6sHP67CzIOQyaz_E"
 const pastSearches = $(".history");
 var videoTest = $("#youtube-test")
 var wikipediaTest = $("#wikipedia-test")
@@ -15,8 +15,8 @@ $(".search-button-class").click(function(e) {
     $("div#container").removeClass("hide");
     getWikiArticles()
     wikipediaTest.empty()
-    // getYoutubeVideo()
-    // videoTest.empty()
+    getYoutubeVideo()
+    videoTest.empty()
     if (searchHistory.includes(searchHistory) || search === "") {
         return
     }else{
@@ -33,10 +33,9 @@ $(".search-button-modal").click(function(e) {
     console.log(search)
     $("div#container").toggleClass("hide");
     wikipediaTest.empty()
-    getWikiArticles()
-    
-    // getYoutubeVideo()
-    // videoTest.empty()
+    getWikiArticles()    
+    getYoutubeVideo()
+    videoTest.empty()
     if (searchHistory.includes(searchHistory) || search === "") {
         return
     }else{
@@ -47,27 +46,27 @@ $(".search-button-modal").click(function(e) {
 });
 
 // Function to get Youtube videos
-// function getYoutubeVideo(){
-//     var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET",
-//         error: () => {
-//             alert("error")
-//             return
-//         },
-//     }).then(function(youtubeData) {
-//         console.log(youtubeData)
-//         for (let i = 0; i < youtubeData.items.length; i++) {
-//             var videoId = youtubeData.items[i].id.videoId;
-//             videoTest.append(`
-//                 <iframe width="420" height="315"
-//                     src="https://www.youtube.com/embed/${videoId}">
-//                 </iframe>
-//             `);
-//         }
-//     });   
-// }
+function getYoutubeVideo(){
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        error: () => {
+            alert("error")
+            return
+        },
+    }).then(function(youtubeData) {
+        console.log(youtubeData)
+        for (let i = 0; i < youtubeData.items.length; i++) {
+            var videoId = youtubeData.items[i].id.videoId;
+            videoTest.append(`
+                <iframe width="420" height="315"
+                    src="https://www.youtube.com/embed/${videoId}">
+                </iframe>
+            `);
+        }
+    });   
+}
 
 //Function to get Wikipedia articles
 function getWikiArticles(){
@@ -111,8 +110,8 @@ function historySearches(){
     $("div#container").removeClass("hide");
     getWikiArticles()
     wikipediaTest.empty()
-    // getYoutubeVideo()
-    // videoTest.empty()
+    getYoutubeVideo()
+    videoTest.empty()
 }
 
 //function to get past searches from local storage
