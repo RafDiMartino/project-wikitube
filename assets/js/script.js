@@ -1,49 +1,94 @@
-// const youtubeAPI = "AIzaSyARAdM68mQB0klzmy4LNFuo2e8Z4t4BQu8"
+const youtubeAPI = "AIzaSyARAdM68mQB0klzmy4LNFuo2e8Z4t4BQu8"
 
 var videoTest = $("#youtube-test")
 var wikipediaTest = $("#wikipedia-test")
 var search = "";
 
 // Event listener to get the search value
-$("#search-button").click(function(e) {
+$("#search-button").click(function (e) {
     e.preventDefault()
     search = $("#search-input").val();
     console.log(search)
     getWikiArticles()
     wikipediaTest.empty()
-    // getYoutubeVideo()
-    // videoTest.empty()
+    getYoutubeVideo()
+    videoTest.empty()
 });
 
-// Function to get Youtube videos
-// function getYoutubeVideo(){
-//     var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
-//     $.ajax({
-//         url: queryURL,
-//         method: "GET",
-//         error: () => {
-//             alert("error")
-//             return
-//         },
-//     }).then(function(youtubeData) {
-//         console.log(youtubeData)
-//         for (let i = 0; i < youtubeData.items.length; i++) {
-//             var videoId = youtubeData.items[i].id.videoId;
-//             console.log(videoId)
-//             videoTest.append(`
-//                 <iframe width="420" height="315"
-//                     src="https://www.youtube.com/embed/${videoId}">
-//                 </iframe>
-//             `);
-//         }
-//     });   
-// }
-
+//Function to get Youtube videos
+/*function getYoutubeVideo() {
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key=" + youtubeAPI + "&q=" + search + "&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        error: () => {
+            alert("error")
+            return
+        },
+    }).then(function (youtubeData) {
+        console.log(youtubeData)
+        for (let i = 0; i < youtubeData.items.length; i++) {
+            var videoId = youtubeData.items[i].id.videoId;
+            console.log(videoId)
+            videoTest.append(`
+           
+                 <iframe width="420" height="315"
+                    src="https://www.youtube.com/embed/${videoId}">
+                                     </iframe>
+                 
+                              `);
+        }
+    });
+}
+*/
+// Rewrite function to append video so that instead of five videos the same size, We have 1 large and 4 same size. This would make styling easier
+function getYoutubeVideo() {
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key=" + youtubeAPI + "&q=" + search + "&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        error: () => {
+            alert("error")
+            return
+        },
+    }).then(function (youtubeData) {
+        console.log(youtubeData)
+        for (let i = 0; i < youtubeData.items.length; i++) {
+            var videoId = youtubeData.items[i].id.videoId;
+            console.log(videoId)
+            if (i === 0) {
+                videoTest.append(`
+                <div class="large-video">
+                    <iframe width="100%" height="400"
+                        src="https://www.youtube.com/embed/${videoId}">
+                    </iframe>
+                </div>
+                `);
+            } else if (i > 0 && i <= 2) {
+                videoTest.append(`
+                <div class="video-row-1">
+                    <iframe width="48%" height="200"
+                        src="https://www.youtube.com/embed/${videoId}">
+                    </iframe>
+                </div>
+                `);
+            } else if (i > 2 && i <= 4) {
+                videoTest.append(`
+                <div class="video-row-2">
+                    <iframe width="48%" height="200"
+                        src="https://www.youtube.com/embed/${videoId}">
+                    </iframe>
+                </div>
+                `);
+            }
+        }
+    });
+}
 //Function to get Wikipedia articles
-function getWikiArticles(){
+function getWikiArticles() {
     // var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + search + "&format=json&origin=*"
     //var queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="+ search +"&rvslots=*&rvprop=content&format=json&origin=*"
-    var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch="+ search +"&gsrlimit=1&prop=pageimages|extracts&exintro&exlimit=max&format=json&origin=*&pithumbsize=1000"
+    var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch=" + search + "&gsrlimit=1&prop=pageimages|extracts&exintro&exlimit=max&format=json&origin=*&pithumbsize=1000"
     //var queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="+ search +"&rvslots=*&rvprop=content&format=json&origin=*"
     //var queryURL = "http://en.wikipedia.org/w/api.php?action=parse&format=json&page=Rome&prop=text|extract&format=json&origin=*"
     $.ajax({
@@ -53,12 +98,12 @@ function getWikiArticles(){
             alert("error")
             return
         },
-    }).then(function(wikiData) {
+    }).then(function (wikiData) {
         console.log(wikiData);
         var test = wikiData.query.pages;
         // var test2 = Object.keys(test).toString()
         var results = wikiData.query.pages
-        Object.keys(results).forEach( key => {
+        Object.keys(results).forEach(key => {
             const id = key
             const title = results[key].title
             const text = results[key].extract
@@ -70,7 +115,7 @@ function getWikiArticles(){
                 <img src="${image}">
                 <p>${text}</p>
             `)
-        }) 
+        })
         console.log(results)
     });
 }
