@@ -70,7 +70,7 @@ function getYoutubeVideo() {
             } else if (i > 0 && i <= 2) {
                 videoTest.append(`
                 <div class="video-row-1">
-                    <iframe width="49%" height="200"
+                    <iframe class="video-iframe" width="49%" height="200"
                         src="https://www.youtube.com/embed/${videoId}">
                     </iframe>
                     <p>${videoTitle}</p>
@@ -79,7 +79,7 @@ function getYoutubeVideo() {
             } else if (i > 2 && i <= 4) {
                 videoTest.append(`
                 <div class="video-row-2">
-                    <iframe width="49%" height="200"
+                    <iframe class="video-iframe" width="49%" height="200"
                         src="https://www.youtube.com/embed/${videoId}">
                     </iframe>
                     <p>${videoTitle}</p>
