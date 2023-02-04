@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+button {
+    border-radius: 0px !important;
+}
+
 .large-video {
     float: left;
     width: 100%;
@@ -121,4 +125,34 @@
         width: 200px;
         
     }
+}
+/* modal styles */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.input-group-modal {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.input-group-modal input {
+    width: 80%;
+    border: 1px solid black
+}
+
+.input-group-append-modal {
+    width: 20%;
+}
+
+.input-group-append-modal  button{
+    width: 100%;
+}
+
+.history-modal {
+    display: flex;
+    flex-direction: column;
 }

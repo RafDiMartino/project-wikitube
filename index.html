@@ -40,7 +40,7 @@
   </div>
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" data-backdrop="static" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Project WikiTube</h5>
@@ -49,12 +49,13 @@
           </button>
         </div>
         <div class="modal-body">
+          <p>Instruction to app</p>
           <form id="search-form" class="form">
             <div class="form-group">
-              <div class="input-group">
-                <input class="form-input weather-search" type="text" id="search-input-modal" placeholder="London"
+              <div class="input-group-modal">
+                <input class="form-input" type="text" id="search-input-modal" placeholder="London"
                   aria-labelledby="form-heading" aria-controls="today" />
-                <div class="input-group-append">
+                <div class="input-group-append-modal">
                   <button type="submit" class="btn btn-outline-success search-button-modal" id="search-button" data-dismiss="modal" aria-label="submit search">
                     Search
                   </button>
@@ -62,10 +63,10 @@
               </div>
             </div>
           </form>
-          <button type="submit" class="btn btn-outline-danger search-button-modal" id="search-button" aria-label="submit search">
+          <button type="submit" class="btn btn-outline-danger mb-3" id="search-button" aria-label="submit search">
             Clear Searches
           </button>
-          <div class="history"></div>
+          <div class="history history-modal"></div>
         </div>
       </div>
     </div>
