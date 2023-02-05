@@ -131,10 +131,11 @@ button {
     display: grid;
     grid-template-columns: 25%;
     grid-template-rows: auto;
-    grid-template-areas: 
-    "top top top top"
-    "left middle right bottom";
+    grid-template-areas:
+        "top top top top"
+        "left middle right bottom";
     margin: 0 0 8em;
+    row-gap: 1em;
 }
 
 .video {
