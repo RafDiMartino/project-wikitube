@@ -6,7 +6,7 @@
 }
 
 button {
-    border-radius: 0px !important;
+    border-radius: 0px;
 }
 
 .large-video {
@@ -66,14 +66,15 @@ button {
     font-size: 12px;
     margin:16px 0;
 }
-.recent-search a {
+.history button {
     border: 1px solid #28a745;
-    border-radius: 9px;
+    border-radius: 100px;
     color: #28a745;
     padding: 4px 12px;
+    margin: 0 8px 0 0;
 }
-.recent-search a:focus,
-.recent-search a:hover {
+.history button:focus,
+.history button:hover {
     background: #28a745;
     color: #fff;
     text-decoration: none;
