@@ -1,4 +1,4 @@
-const youtubeAPI = "AIzaSyDGCWZu84Wo1O7MmVU6sHP67CzIOQyaz_E"
+const youtubeAPI = "AIzaSyARAdM68mQB0klzmy4LNFuo2e8Z4t4BQu8"
 const pastSearches = $(".history");
 var videoTest = $("#youtube-test")
 var wikipediaTest = $("#wikipedia-test")
@@ -60,9 +60,11 @@ function getYoutubeVideo(){
         for (let i = 0; i < youtubeData.items.length; i++) {
             var videoId = youtubeData.items[i].id.videoId;
             videoTest.append(`
-                <iframe width="420" height="315"
+            <div class="video" id="video${i+1}">
+                <iframe width="100%" height="100%"
                     src="https://www.youtube.com/embed/${videoId}">
                 </iframe>
+            </div>
             `);
         }
     });   
