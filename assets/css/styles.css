@@ -6,7 +6,7 @@
 }
 
 button {
-    border-radius: 0px !important;
+    border-radius: 0;
 }
 
 .large-video {
@@ -43,7 +43,7 @@ button {
 
 /* page design */
 
-.container {font-family: 'Inter';}
+.container, .modal {font-family: 'Inter';}
 .container h1 {
     border-bottom: 2px solid #000;
     font-size: 32px;
@@ -62,22 +62,31 @@ button {
     width: 88px;
     margin: 0;
 }
-.recent-search {
-    font-size: 12px;
-    margin:16px 0;
+.recentSearches {
+    border-radius: 100px;
+    display: flex;
+    margin: 16px 0;
+    column-gap: 12px;
 }
-.recent-search a {
+
+.history {
+    font-size: 12px;
+}
+.history button {
     border: 1px solid #28a745;
-    border-radius: 9px;
     color: #28a745;
     padding: 4px 12px;
 }
-.recent-search a:focus,
-.recent-search a:hover {
+.history button:focus,
+.history button:hover {
     background: #28a745;
     color: #fff;
     text-decoration: none;
     border-color: transparent;
+}
+.btn.clear-search {
+     padding: 4px 12px;
+     height: fit-content;
 }
 
 /* Wikipedia design elements */
@@ -102,30 +111,59 @@ button {
     color: #121212;
 }
 
-/* breakpoints for mobile */
-@media (max-width: 768px) {
-    #wikipedia-test h2 {
-        font-size: 40px;
-    }
-    #wikipedia-test img {
-        display: block;
-        margin: 0 auto 24px;
-        float: none;
-    }
-    #wikipedia-test p {
-        display: block;
-    }
+#video1 {
+    grid-area: top;
 }
-@media (max-width: 512px) {
-    #wikipedia-test h2 {
-        font-size: 32px;
-    }
-    #wikipedia-test img {
-        height: 200px;
-        width: 200px;
-        
-    }
+#video2 {
+    grid-area: left;
 }
+#video3 {
+    grid-area: middle;
+}
+#video4 {
+    grid-area: right;
+}
+#video5 {
+    grid-area: bottom;
+}
+
+#youtube-test {
+    display: grid;
+    grid-template-columns: 25%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        "top top top top"
+        "left middle right bottom";
+    margin: 0 0 8em;
+    row-gap: 1em;
+}
+
+.video {
+    position: relative;
+    padding-bottom: 56.25%; /* proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+    height: 0;
+    overflow: hidden;
+}
+
+.video iframe {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* Modal Header + Border */
+
+h5.modal-title {
+    border-bottom: 2px solid #000;
+    font-size: 32px;
+    font-weight:bold;
+    letter-spacing: -1px;
+    padding: 0 0 8px;
+    width: 100%;
+}
+.modal-header {border-bottom: 0 !important;}
+
 /* modal styles */
 .modal-body {
     display: flex;
@@ -155,4 +193,49 @@ button {
 .history-modal {
     display: flex;
     flex-direction: column;
+}
+
+/* breakpoints for mobile */
+
+@media (max-width: 992px) {
+    #youtube-test {
+        grid-template-columns: 50%;
+        grid-template-areas:
+            "top top"
+            "left middle" 
+            "right bottom"
+    }
+}
+
+@media (max-width: 768px) {
+    #wikipedia-test h2 {
+        font-size: 40px;
+    }
+    #wikipedia-test img {
+        display: block;
+        margin: 0 auto 24px;
+        float: none;
+    }
+    #wikipedia-test p {
+        display: block;
+    }
+    #youtube-test {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "top "
+            "left"
+            "middle"
+            "right"
+            "bottom";
+    }
+}
+
+@media (max-width: 512px) {
+    #wikipedia-test h2 {
+        font-size: 32px;
+    }
+    #wikipedia-test img {
+        height: 200px;
+        width: 200px;  
+    }
 }
