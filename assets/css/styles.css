@@ -6,7 +6,7 @@
 }
 
 button {
-    border-radius: 0px;
+    border-radius: 0;
 }
 
 .large-video {
@@ -62,16 +62,20 @@ button {
     width: 88px;
     margin: 0;
 }
-.recent-search {
+.recentSearches {
+    border-radius: 100px;
+    display: flex;
+    margin: 16px 0;
+    column-gap: 12px;
+}
+
+.history {
     font-size: 12px;
-    margin:16px 0;
 }
 .history button {
     border: 1px solid #28a745;
-    border-radius: 100px;
     color: #28a745;
     padding: 4px 12px;
-    margin: 0 8px 0 0;
 }
 .history button:focus,
 .history button:hover {
@@ -79,6 +83,10 @@ button {
     color: #fff;
     text-decoration: none;
     border-color: transparent;
+}
+.btn.clear-search {
+     padding: 4px 12px;
+     height: fit-content;
 }
 
 /* Wikipedia design elements */
