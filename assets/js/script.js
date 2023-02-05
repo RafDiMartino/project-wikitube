@@ -46,7 +46,7 @@ $(".search-button-modal").click(function(e) {
 });
 
 //Function to get Youtube videos
-function getYoutubeVideo(){
+/*function getYoutubeVideo(){
     var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
     $.ajax({
         url: queryURL,
@@ -67,6 +67,36 @@ function getYoutubeVideo(){
         }
     });   
 }
+*/
+function getYoutubeVideo(){
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        error: () => {
+            alert("error")
+            return
+        },
+    }).then(function(youtubeData) {
+        console.log(youtubeData)
+        videoTest.append(`<div class="video-container">`);
+        for (let i = 0; i < youtubeData.items.length; i++) {
+            var videoId = youtubeData.items[i].id.videoId;
+            var videoTitle = youtubeData.items[i].snippet.title;
+            console.log(videoId)
+            videoTest.append(`
+                <div class="video-item">
+                  <iframe width="100%" height="315"
+                    src="https://www.youtube.com/embed/${videoId}">
+                  </iframe>
+                  <p>${videoTitle}</p>
+                </div>
+            `);
+        }
+        videoTest.append(`</div>`);
+    });   
+}
+
 
 //Function to get Wikipedia articles
 function getWikiArticles() {
