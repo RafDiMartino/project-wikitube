@@ -125,6 +125,7 @@ button {
     grid-template-areas: 
     "top top top top"
     "left middle right bottom";
+    margin: 0 0 8em;
 }
 
 .video {
