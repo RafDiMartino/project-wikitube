@@ -124,7 +124,7 @@ button {
     grid-template-rows: auto;
     grid-template-areas: 
     "top top top top"
-    "left middle right bottom"
+    "left middle right bottom";
 }
 
 .video {
@@ -182,6 +182,16 @@ button {
 
 /* breakpoints for mobile */
 
+@media (max-width: 992px) {
+    #youtube-test {
+        grid-template-columns: 50%;
+        grid-template-areas:
+            "top top"
+            "left middle" 
+            "right bottom"
+    }
+}
+
 @media (max-width: 768px) {
     #wikipedia-test h2 {
         font-size: 40px;
@@ -193,6 +203,15 @@ button {
     }
     #wikipedia-test p {
         display: block;
+    }
+    #youtube-test {
+        grid-template-columns: 100%;
+        grid-template-areas:
+            "top "
+            "left"
+            "middle"
+            "right"
+            "bottom";
     }
 }
 
