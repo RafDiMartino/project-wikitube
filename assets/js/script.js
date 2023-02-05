@@ -45,7 +45,7 @@ $(".search-button-modal").click(function(e) {
     } 
 });
 
-// Function to get Youtube videos
+//Function to get Youtube videos
 function getYoutubeVideo(){
     var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
     $.ajax({
@@ -122,8 +122,7 @@ function initSearchHistory(){
     if (storedHistory) {
         searchHistory = JSON.parse(storedHistory);
         // console.log(searches)
-        renderSearchHistory(searchHistory);
-        
+        renderSearchHistory(searchHistory); 
     }
 }
 
@@ -134,7 +133,14 @@ function renderSearchHistory(searchHistory) {
         if (searchHistory[i].includes(search)) {
             pastSearches.prepend($(`<button class="past-search btn btn-outline-dark mb-2" data-search="${element}" data-dismiss="modal">`).text(element));
         } 
-        console.log(searchHistory[i])
+        // console.log(searchHistory[i])
     }
 }
 initSearchHistory()
+
+// Clear searches event listener
+$(".clear-search").click(function() {
+    location.reload()
+    localStorage.clear();
+    searchHistory = ""
+})
