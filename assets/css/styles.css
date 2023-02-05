@@ -43,7 +43,7 @@ button {
 
 /* page design */
 
-.container {font-family: 'Inter';}
+.container, .modal {font-family: 'Inter';}
 .container h1 {
     border-bottom: 2px solid #000;
     font-size: 32px;
@@ -159,6 +159,18 @@ button {
 } */
 
 /* modal styles */
+
+h5.modal-title {
+    border-bottom: 2px solid #000;
+    font-size: 32px;
+    font-weight:bold;
+    letter-spacing: -1px;
+    padding: 0 0 8px;
+    width: 100%;
+}
+.modal-header {
+    border-bottom: 0 !important;
+}
 
 .modal-body {
     display: flex;
