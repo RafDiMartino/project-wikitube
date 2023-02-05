@@ -151,14 +151,7 @@ button {
     width: 100%;
     height: 100%;
 }
-
-
-/* #video1 {
-    width: 100%;
-    min-height: 624px;
-} */
-
-/* modal styles */
+/* Modal Header + Border */
 
 h5.modal-title {
     border-bottom: 2px solid #000;
@@ -168,10 +161,9 @@ h5.modal-title {
     padding: 0 0 8px;
     width: 100%;
 }
-.modal-header {
-    border-bottom: 0 !important;
-}
+.modal-header {border-bottom: 0 !important;}
 
+/* modal styles */
 .modal-body {
     display: flex;
     flex-direction: column;
