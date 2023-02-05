@@ -180,10 +180,6 @@ button {
     flex-direction: column;
 }
 
-
-
-
-
 /* breakpoints for mobile */
 
 @media (max-width: 768px) {
@@ -209,6 +205,3 @@ button {
         width: 200px;  
     }
 }
-
-
-
