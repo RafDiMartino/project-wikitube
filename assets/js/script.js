@@ -1,7 +1,7 @@
 const youtubeAPI = "AIzaSyARAdM68mQB0klzmy4LNFuo2e8Z4t4BQu8"
 const pastSearches = $(".history");
-var videoTest = $("#youtube-test")
-var wikipediaTest = $("#wikipedia-test")
+var youtubeSection = $("#youtube-section")
+var wikipediaSection = $("#wikipedia-section")
 var search = "";
 var searchHistory = [];
 
@@ -14,8 +14,8 @@ $(".search-button-class").click(function(e) {
     search = $("#search-input").val();
     if (searchHistory.includes(search) || search === "") {
         $("header#container").addClass("hide");
-        wikipediaTest.empty()
-        videoTest.empty()
+        wikipediaSection.empty()
+        youtubeSection.empty()
         location.reload()
         return
     }else{
@@ -23,9 +23,9 @@ $(".search-button-class").click(function(e) {
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
         initSearchHistory()
         getWikiArticles()
-        wikipediaTest.empty()
+        wikipediaSection.empty()
         getYoutubeVideo()
-        videoTest.empty()
+        youtubeSection.empty()
         console.log(searchHistory)
         $("header#container").removeClass("hide")
     }
@@ -41,11 +41,11 @@ $(".search-button-modal").click(function(e) {
     }else{
         searchHistory.push(search)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
-        wikipediaTest.fadeOut()
+        wikipediaSection.fadeOut()
         $("header#container").removeClass("hide");
         getWikiArticles()  
         getYoutubeVideo()
-        videoTest.empty()
+        youtubeSection.empty()
         initSearchHistory()  
     } 
 });
@@ -61,7 +61,7 @@ function getYoutubeVideo(){
         console.log(youtubeData)
         for (let i = 0; i < youtubeData.items.length; i++) {
             var videoId = youtubeData.items[i].id.videoId;
-            videoTest.append(`
+            youtubeSection.append(`
             <div class="video" id="video${i+1}">
                 <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
@@ -86,7 +86,7 @@ function getWikiArticles() {
             const title = results[key].title
             const text = results[key].extract
             const image = results[key].thumbnail.source
-            wikipediaTest.append(`
+            wikipediaSection.append(`
                 <h2>${title}</h2>
                 <img src="${image}" alt="${title}">
                 <p>${text}</p>
@@ -106,9 +106,9 @@ function historySearches(){
     search = $(this).attr("data-search")
     $("header#container").removeClass("hide");
     getWikiArticles()
-    wikipediaTest.empty().fadeOut()
+    wikipediaSection.empty().fadeOut()
     getYoutubeVideo()
-    videoTest.empty()
+    youtubeSection.empty()
 }
 
 //function to get past searches from local storage
