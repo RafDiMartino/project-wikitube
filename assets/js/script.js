@@ -63,9 +63,7 @@ function getYoutubeVideo(){
             var videoId = youtubeData.items[i].id.videoId;
             videoTest.append(`
             <div class="video" id="video${i+1}">
-                <iframe width="100%" height="100%"
-                    src="https://www.youtube.com/embed/${videoId}">
-                </iframe>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/${videoId}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             `)
             .hide()
