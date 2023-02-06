@@ -13,7 +13,7 @@ $(".search-button-class").click(function(e) {
     e.preventDefault()
     search = $("#search-input").val();
     if (searchHistory.includes(search) || search === "") {
-        $("div#container").addClass("hide");
+        $("header#container").addClass("hide");
         wikipediaTest.empty()
         videoTest.empty()
         location.reload()
@@ -27,7 +27,7 @@ $(".search-button-class").click(function(e) {
         getYoutubeVideo()
         videoTest.empty()
         console.log(searchHistory)
-        $("div#container").removeClass("hide")
+        $("header#container").removeClass("hide")
     }
 });
 
@@ -42,7 +42,7 @@ $(".search-button-modal").click(function(e) {
         searchHistory.push(search)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
         wikipediaTest.fadeOut()
-        $("div#container").removeClass("hide");
+        $("header#container").removeClass("hide");
         getWikiArticles()  
         getYoutubeVideo()
         videoTest.empty()
@@ -90,7 +90,7 @@ function getWikiArticles() {
             const image = results[key].thumbnail.source
             wikipediaTest.append(`
                 <h2>${title}</h2>
-                <img src="${image}">
+                <img src="${image}" alt="${title}">
                 <p>${text}</p>
             `)
             .hide()
@@ -106,7 +106,7 @@ $(document).on('click', '.past-search', historySearches);
 // Function to re-display the current weather based on the click of past-searches buttons
 function historySearches(){
     search = $(this).attr("data-search")
-    $("div#container").removeClass("hide");
+    $("header#container").removeClass("hide");
     getWikiArticles()
     wikipediaTest.empty().fadeOut()
     getYoutubeVideo()
