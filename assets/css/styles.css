@@ -12,6 +12,14 @@ iframe {
     border: none;
 }
 
+.history-page button{
+    margin-right: .5rem;
+}
+
+.clear-search-page {
+    margin-bottom: 1rem;
+}
+
 .large-video {
     float: left;
     width: 100%;
@@ -73,6 +81,7 @@ iframe {
 .recentSearches {
     border-radius: 100px;
     display: flex;
+    flex-direction: row;
     margin: 16px 0;
     column-gap: 12px;
 }
@@ -93,8 +102,8 @@ iframe {
     border-color: transparent;
 }
 .btn.clear-search {
-     padding: 4px 12px;
-     height: fit-content;
+    padding: 4px 12px;
+    height: fit-content;
 }
 
 /* Wikipedia design elements */
@@ -124,15 +133,19 @@ iframe {
 }
 #video2 {
     grid-area: left;
+    height: 100%;
 }
 #video3 {
     grid-area: middle;
+    height: 100%;
 }
 #video4 {
     grid-area: right;
+    height: 100%;
 }
 #video5 {
     grid-area: bottom;
+    height: 100%;
 }
 
 #youtube-test {
@@ -143,7 +156,8 @@ iframe {
         "top top top top"
         "left middle right bottom";
     margin: 0 0 8rem;
-    row-gap: 1rem;
+    gap: 1rem;
+    
 }
 
 .video {
@@ -186,12 +200,12 @@ h5.modal-title {
 }
 
 .input-group-modal input {
-    width: 80%;
+    width: 70%;
     border: 1px solid black
 }
 
 .input-group-append-modal {
-    width: 20%;
+    width: 30%;
 }
 
 .input-group-append-modal  button{
@@ -212,6 +226,10 @@ h5.modal-title {
             "top top"
             "left middle" 
             "right bottom"
+    }
+    .recentSearches {
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -236,6 +254,7 @@ h5.modal-title {
             "right"
             "bottom";
     }
+
 }
 
 @media (max-width: 512px) {
@@ -246,4 +265,5 @@ h5.modal-title {
         height: 200px;
         width: 200px;  
     }
+
 }
