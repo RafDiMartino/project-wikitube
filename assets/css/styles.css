@@ -93,8 +93,8 @@ iframe {
     border-color: transparent;
 }
 .btn.clear-search {
-     padding: 4px 12px;
-     height: fit-content;
+    padding: 4px 12px;
+    height: fit-content;
 }
 
 /* Wikipedia design elements */
@@ -124,15 +124,19 @@ iframe {
 }
 #video2 {
     grid-area: left;
+    height: 100%;
 }
 #video3 {
     grid-area: middle;
+    height: 100%;
 }
 #video4 {
     grid-area: right;
+    height: 100%;
 }
 #video5 {
     grid-area: bottom;
+    height: 100%;
 }
 
 #youtube-test {
@@ -143,7 +147,8 @@ iframe {
         "top top top top"
         "left middle right bottom";
     margin: 0 0 8rem;
-    row-gap: 1rem;
+    gap: 1rem;
+    
 }
 
 .video {
