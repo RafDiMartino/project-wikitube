@@ -19,7 +19,11 @@ iframe {
 }
 
 .btn-outline-dark:hover,
-.btn-outline-success:hover{
+.btn-outline-success:hover,
+.btn-outline-dark:active,
+.btn-outline-success:active,
+.btn-outline-dark:focus,
+.btn-outline-success:focus{
     color: rgb(255, 255, 255) !important;
     border-color: rgb(40, 167, 68) !important;
 }
