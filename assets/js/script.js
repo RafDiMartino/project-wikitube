@@ -6,42 +6,47 @@ var search = "";
 var searchHistory = [];
 
 //Modal
-$('#exampleModal').modal('show');
+$("#exampleModal").modal("show");
 
 // Event listener to get the search value
 $(".search-button-class").click(function(e) {
     e.preventDefault()
     search = $("#search-input").val();
-    $("div#container").removeClass("hide");
-    getWikiArticles()
-    wikipediaTest.empty()
-    getYoutubeVideo()
-    videoTest.empty()
-    if (searchHistory.includes(searchHistory) || search === "") {
+    if (searchHistory.includes(search) || search === "") {
+        $("div#container").addClass("hide");
+        wikipediaTest.empty()
+        videoTest.empty()
+        location.reload()
         return
     }else{
         searchHistory.push(search)
-        console.log(searchHistory)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
         initSearchHistory()
+        getWikiArticles()
+        wikipediaTest.empty()
+        getYoutubeVideo()
+        videoTest.empty()
+        console.log(searchHistory)
+        $("div#container").removeClass("hide");
     } 
+        // localStorage.setItem("search-history", JSON.stringify());
 });
 
 $(".search-button-modal").click(function(e) {
     e.preventDefault()
     search = $("#search-input-modal").val();
-    console.log(search)
-    $("div#container").toggleClass("hide");
-    wikipediaTest.empty()
-    getWikiArticles()    
-    getYoutubeVideo()
-    videoTest.empty()
-    if (searchHistory.includes(searchHistory) || search === "") {
+    if (searchHistory.includes(search) || search === "") {
+        location.reload()
         return
     }else{
         searchHistory.push(search)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
-        initSearchHistory()
+        wikipediaTest.empty()
+        $("div#container").removeClass("hide");
+        getWikiArticles()  
+        getYoutubeVideo()
+        videoTest.empty()
+        initSearchHistory()  
     } 
 });
 
@@ -50,11 +55,8 @@ function getYoutubeVideo(){
     var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
     $.ajax({
         url: queryURL,
-        method: "GET",
-        error: () => {
-            alert("error")
-            return
-        },
+        method: "GET"
+        
     }).then(function(youtubeData) {
         console.log(youtubeData)
         for (let i = 0; i < youtubeData.items.length; i++) {
@@ -85,9 +87,7 @@ function getWikiArticles() {
             return
         },
     }).then(function (wikiData) {
-        console.log(wikiData);
-        var test = wikiData.query.pages;
-        // var test2 = Object.keys(test).toString()
+        // console.log(wikiData);
         var results = wikiData.query.pages
         Object.keys(results).forEach(key => {
             const id = key
