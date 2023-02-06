@@ -12,6 +12,18 @@ iframe {
     border: none;
 }
 
+.btn-outline-dark,
+.btn-outline-success{
+    color: green !important;
+    border-color: green !important;
+}
+
+.btn-outline-dark:hover,
+.btn-outline-success:hover{
+    color: rgb(255, 255, 255) !important;
+    border-color: rgb(40, 167, 68) !important;
+}
+
 .history-page button{
     margin-right: .5rem;
 }
@@ -176,7 +188,7 @@ iframe {
 }
 /* Modal Header + Border */
 
-h5.modal-title {
+h2.modal-title {
     border-bottom: 2px solid #000;
     font-size: 32px;
     font-weight:bold;
