@@ -8,7 +8,7 @@ var searchHistory = [];
 //Modal
 $("#exampleModal").modal("show");
 
-// Event listener to get the search value
+// Event listener to get the search value from the page
 $(".search-button-class").click(function(e) {
     e.preventDefault()
     search = $("#search-input").val();
@@ -27,11 +27,11 @@ $(".search-button-class").click(function(e) {
         getYoutubeVideo()
         videoTest.empty()
         console.log(searchHistory)
-        $("div#container").removeClass("hide");
-    } 
-        // localStorage.setItem("search-history", JSON.stringify());
+        $("div#container").removeClass("hide")
+    }
 });
 
+// Event listener to get the search value from the modal
 $(".search-button-modal").click(function(e) {
     e.preventDefault()
     search = $("#search-input-modal").val();
@@ -41,7 +41,7 @@ $(".search-button-modal").click(function(e) {
     }else{
         searchHistory.push(search)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
-        wikipediaTest.empty()
+        wikipediaTest.fadeOut()
         $("div#container").removeClass("hide");
         getWikiArticles()  
         getYoutubeVideo()
@@ -50,7 +50,7 @@ $(".search-button-modal").click(function(e) {
     } 
 });
 
-//Function to get Youtube videos
+//Function to get Youtube videos using the youtube API
 function getYoutubeVideo(){
     var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
     $.ajax({
@@ -67,39 +67,34 @@ function getYoutubeVideo(){
                     src="https://www.youtube.com/embed/${videoId}">
                 </iframe>
             </div>
-            `);
+            `)
+            .hide()
+            .fadeIn(500)
         }
     });   
 }
 
-//Function to get Wikipedia articles
+//Function to get Wikipedia articles using the Wikipedia API
 function getWikiArticles() {
-    // var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" + search + "&format=json&origin=*"
-    //var queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="+ search +"&rvslots=*&rvprop=content&format=json&origin=*"
     var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch=" + search + "&gsrlimit=1&prop=pageimages|extracts&exintro&exlimit=max&format=json&origin=*&pithumbsize=1000"
-    //var queryURL = "https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles="+ search +"&rvslots=*&rvprop=content&format=json&origin=*"
-    //var queryURL = "http://en.wikipedia.org/w/api.php?action=parse&format=json&page=Rome&prop=text|extract&format=json&origin=*"
     $.ajax({
         url: queryURL,
         method: "GET",
-        error: () => {
-            alert("error")
-            return
-        },
+
     }).then(function (wikiData) {
-        // console.log(wikiData);
         var results = wikiData.query.pages
         Object.keys(results).forEach(key => {
             const id = key
             const title = results[key].title
             const text = results[key].extract
-            // console.log(results[key].extract)
             const image = results[key].thumbnail.source
             wikipediaTest.append(`
                 <h2>${title}</h2>
                 <img src="${image}">
                 <p>${text}</p>
             `)
+            .hide()
+            .fadeIn(500)
         })
         console.log(results)
     });
@@ -113,7 +108,7 @@ function historySearches(){
     search = $(this).attr("data-search")
     $("div#container").removeClass("hide");
     getWikiArticles()
-    wikipediaTest.empty()
+    wikipediaTest.empty().fadeOut()
     getYoutubeVideo()
     videoTest.empty()
 }
@@ -123,7 +118,6 @@ function initSearchHistory(){
     var storedHistory = localStorage.getItem('search-history');
     if (storedHistory) {
         searchHistory = JSON.parse(storedHistory);
-        // console.log(searches)
         renderSearchHistory(searchHistory); 
     }
 }
@@ -135,7 +129,6 @@ function renderSearchHistory(searchHistory) {
         if (searchHistory[i].includes(search)) {
             pastSearches.prepend($(`<button class="past-search btn btn-outline-dark mb-2" data-search="${element}" data-dismiss="modal">`).text(element));
         } 
-        // console.log(searchHistory[i])
     }
 }
 initSearchHistory()

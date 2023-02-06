@@ -142,8 +142,8 @@ iframe {
     grid-template-areas:
         "top top top top"
         "left middle right bottom";
-    margin: 0 0 8em;
-    row-gap: 1em;
+    margin: 0 0 8rem;
+    row-gap: 1rem;
 }
 
 .video {
