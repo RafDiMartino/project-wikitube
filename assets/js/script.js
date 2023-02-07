@@ -1,4 +1,4 @@
-const youtubeAPI = "AIzaSyARAdM68mQB0klzmy4LNFuo2e8Z4t4BQu8"
+const youtubeAPI = "AIzaSyDGCWZu84Wo1O7MmVU6sHP67CzIOQyaz_E"
 const pastSearches = $(".history");
 var youtubeSection = $("#youtube-section")
 var wikipediaSection = $("#wikipedia-section")
@@ -16,6 +16,7 @@ $(".search-button-class").click(function(e) {
         $("header#container").addClass("hide");
         wikipediaSection.empty()
         youtubeSection.empty()
+        $(".footer").hide();
         location.reload()
         return
     }else{
@@ -38,6 +39,7 @@ $(".search-button-modal").click(function(e) {
     search = $("#search-input-modal").val();
     if (searchHistory.includes(search) || search === "") {
         location.reload()
+        
         return
     }else{
         searchHistory.push(search)
