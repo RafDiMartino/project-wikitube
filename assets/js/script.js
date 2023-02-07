@@ -74,7 +74,7 @@ function getYoutubeVideo(){
 
 //Function to get Wikipedia articles using the Wikipedia API
 function getWikiArticles() {
-    var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch=" + search + "&gsrlimit=1&prop=pageimages|extracts&exintro&exlimit=max&format=json&origin=*&pithumbsize=1000"
+    var queryURL = "https://en.wikipedia.org/w/api.php?action=query&list=allimages&aifrom=B&generator=search&links&gsrsearch=" + search + "&gsrlimit=1&prop=info|pageimages|extracts&exintro&exlimit=max&inprop=url&format=json&origin=*&pithumbsize=1000"
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -86,10 +86,12 @@ function getWikiArticles() {
             const title = results[key].title
             const text = results[key].extract
             const image = results[key].thumbnail.source
+            const wikiLink = results[key].fullurl
             wikipediaSection.append(`
                 <h2>${title}</h2>
                 <img src="${image}" alt="${title}">
                 <p>${text}</p>
+                <p>For more informations read the full <a href="${wikiLink}" target="_blank">Wikipedia article</a></p>
             `)
             .hide()
             .fadeIn(500)
