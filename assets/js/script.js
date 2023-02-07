@@ -52,7 +52,7 @@ $(".search-button-modal").click(function(e) {
 
 //Function to get Youtube videos using the youtube API
 function getYoutubeVideo(){
-    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&type=video&part=snippet&videoEmbeddable=true&videoSyndicated=true&videoLicense=youtube&order=viewCount"
+    var queryURL = "https://www.googleapis.com/youtube/v3/search?key="+ youtubeAPI +"&q="+ search +"&part=snippet&type=video&regionCode=uk"
     $.ajax({
         url: queryURL,
         method: "GET"
