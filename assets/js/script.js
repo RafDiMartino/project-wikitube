@@ -91,7 +91,7 @@ function getWikiArticles() {
                 <h2>${title}</h2>
                 <img src="${image}" alt="${title}">
                 <p>${text}</p>
-                <p>For more informations read the full <a href="${wikiLink}" target="_blank">Wikipedia article</a></p>
+                <p>For more information, visit<a href="${wikiLink}" target="_blank">Wikipedia</a>.</p>
             `)
             .hide()
             .fadeIn(500)
