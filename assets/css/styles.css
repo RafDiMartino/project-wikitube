@@ -238,6 +238,15 @@ h2.modal-title {
     flex-direction: column;
 }
 
+.footer {
+    padding: 1rem 0;
+}
+
+.footer .container {
+    padding-top: 2rem;
+    border-top: 2px solid black;
+}
+
 /* breakpoints for mobile */
 @media (max-width: 992px) {
     #youtube-section {
