@@ -28,6 +28,7 @@ $(".search-button-class").click(function(e) {
         youtubeSection.empty()
         console.log(searchHistory)
         $("header#container").removeClass("hide")
+        $(".footer").hide().fadeIn(3000)
     }
 });
 
@@ -42,7 +43,8 @@ $(".search-button-modal").click(function(e) {
         searchHistory.push(search)
         localStorage.setItem("search-history", JSON.stringify(searchHistory));
         wikipediaSection.fadeOut()
-        $("header#container").removeClass("hide");
+        $("header#container").removeClass("hide")
+        $(".footer").hide().fadeIn(3000)
         getWikiArticles()  
         getYoutubeVideo()
         youtubeSection.empty()
@@ -106,7 +108,8 @@ $(document).on('click', '.past-search', historySearches);
 // Function to re-display the current weather based on the click of past-searches buttons
 function historySearches(){
     search = $(this).attr("data-search")
-    $("header#container").removeClass("hide");
+    $("header#container").removeClass("hide")
+    $(".footer").hide().fadeIn(3000)
     getWikiArticles()
     wikipediaSection.empty().fadeOut()
     getYoutubeVideo()
