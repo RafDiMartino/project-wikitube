@@ -27,7 +27,6 @@ $(".search-button-class").click(function(e) {
         wikipediaSection.empty()
         getYoutubeVideo()
         youtubeSection.empty()
-        console.log(searchHistory)
         $("header#container").removeClass("hide")
         $(".footer").hide().fadeIn(3000)
     }
@@ -62,7 +61,6 @@ function getYoutubeVideo(){
         method: "GET"
         
     }).then(function(youtubeData) {
-        console.log(youtubeData)
         for (let i = 0; i < youtubeData.items.length; i++) {
             var videoId = youtubeData.items[i].id.videoId;
             youtubeSection.append(`
@@ -100,7 +98,6 @@ function getWikiArticles() {
             .hide()
             .fadeIn(500)
         })
-        console.log(results)
     });
 }
 
