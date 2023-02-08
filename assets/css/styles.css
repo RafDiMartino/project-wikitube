@@ -74,6 +74,12 @@ iframe {
 
 /* page design */
 .container, .modal {font-family: 'Inter';}
+.modal {
+    background-position: 50% 50%;
+    background-image: url(https://express.adobe.com/page/hHOteMelPSmXs/images/a178ca54-4911-4ffe-9984-037f077afc49.jpg?asset_id=2df4f224-717b-4aff-a6e0-402647c37fa2&img_etag=%2216d2dâ€¦%22&size=2560);
+    background-size: cover;
+}
+
 .container h1 {
     border-bottom: 2px solid #000;
     font-size: 32px;

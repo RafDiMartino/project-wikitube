@@ -53,16 +53,41 @@ AS A user I should be able to enter a brand new search
 
 * Have a quality README (including a unique name, description, technologies used, screenshot, and link to the deployed application)
 
-_
+### Technologies Used
 
-### Technologies Use
+* HTML, CSS, JavaScript, jQuery, Google Fonts, Wikipedia API, YouTube API, Git.
 
-_
+### Software Used
+
+* GitHub, Trello, Figma, Google Slides, Adobe Express.
 
 ### Deployed Application 
 
-_
+View and explore our deployed [application](https://rafdimartino.github.io/project-wikitube/).
+
+### Presentation
+
+As part of our project we have written a [presentation](https://express.adobe.com/page/hHOteMelPSmXs/).
+
+### Installation    
+
+N/A
 
 ### Screenshot
 
-![image](screenshot.jpg)
+![image](./assets/images/screenshot/screenshot.jpg)
+![image](./assets/images/screenshot/screenshot2.jpg)
+
+### Credits
+
+* Jenelle Spio-Garbrah. ([GitHub](https://github.com/jenieb3))
+
+* Michael Frank Samaras. ([GitHub](https://github.com/makemassair))
+
+* Obinna Onanike. ([GitHub](https://github.com/onanapower))
+
+* Raffaele Di Martino ([GitHub](https://github.com/RafDiMartino))
+
+### License
+
+MIT License
